@@ -1,6 +1,6 @@
 package ak.www.kursakademiaandroida.core.di
 
-import ak.www.kursakademiaandroida.features.data.AppDatabase
+import ak.www.kursakademiaandroida.core.database.AppDatabase
 import androidx.room.Room
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module

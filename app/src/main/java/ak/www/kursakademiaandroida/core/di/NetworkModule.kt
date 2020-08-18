@@ -1,7 +1,7 @@
 package ak.www.kursakademiaandroida.core.di
 
 import ak.www.kursakademiaandroida.BuildConfig
-import ak.www.kursakademiaandroida.features.data.remote.RickAndMortyApi
+import ak.www.kursakademiaandroida.core.api.RickAndMortyApi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

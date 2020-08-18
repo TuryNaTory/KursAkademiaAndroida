@@ -15,4 +15,6 @@ val databaseModule = module {
         )
             .build()
     }
+
+    single { get<AppDatabase>().episodeDao() }
 }

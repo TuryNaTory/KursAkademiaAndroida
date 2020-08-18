@@ -1,8 +1,8 @@
 package ak.www.kursakademiaandroida.features.characters.presentation.model
 
 import ak.www.kursakademiaandroida.features.characters.domain.model.Character
-import ak.www.kursakademiaandroida.features.data.remote.model.CharacterLocation
-import ak.www.kursakademiaandroida.features.data.remote.model.CharacterOrigin
+import ak.www.kursakademiaandroida.features.characters.domain.model.CharacterLocation
+import ak.www.kursakademiaandroida.features.characters.domain.model.CharacterOrigin
 
 data class CharacterDisplayable(
     val id: Int,
@@ -11,8 +11,8 @@ data class CharacterDisplayable(
     val species: String,
     val type: String,
     val gender: String,
-    val characterOrigin: CharacterOrigin,
-    val characterLocation: CharacterLocation,
+    val characterOrigin: CharacterOriginDisplayable,
+    val characterLocation: CharacterLocationDisplayable,
     val image: String,
     val episode: List<String>,
     val url: String
@@ -24,10 +24,50 @@ data class CharacterDisplayable(
         species = character.species,
         type = character.type,
         gender = character.gender,
-        characterOrigin = character.characterOrigin,
-        characterLocation = character.characterLocation,
+        characterOrigin = CharacterOriginDisplayable(character.characterOrigin),
+        characterLocation = CharacterLocationDisplayable(character.characterLocation),
         image = character.image,
         episode = character.episode,
         url = character.url
+    )
+
+    data class CharacterOriginDisplayable(
+        val name: String,
+        val url: String
+    ) {
+        constructor(characterOrigin: CharacterOrigin) : this(
+            name = characterOrigin.name,
+            url = characterOrigin.url
+        )
+    }
+
+    data class CharacterLocationDisplayable(
+        val name: String,
+        val url: String
+    ) {
+        constructor(characterLocation: CharacterLocation) : this(
+            name = characterLocation.name,
+            url = characterLocation.url
+        )
+    }
+}
+
+data class CharacterOriginDisplayable(
+    val name: String,
+    val url: String
+) {
+    constructor(characterOrigin: CharacterOrigin) : this(
+        name = characterOrigin.name,
+        url = characterOrigin.url
+    )
+}
+
+data class CharacterLocationDisplayable(
+    val name: String,
+    val url: String
+) {
+    constructor(characterLocation: CharacterLocation) : this(
+        name = characterLocation.name,
+        url = characterLocation.url
     )
 }

@@ -1,8 +1,5 @@
 package ak.www.kursakademiaandroida.features.characters.domain.model
 
-import ak.www.kursakademiaandroida.features.data.remote.model.CharacterLocation
-import ak.www.kursakademiaandroida.features.data.remote.model.CharacterOrigin
-
 data class Character(
     val id: Int,
     val name: String,
@@ -14,5 +11,15 @@ data class Character(
     val characterLocation: CharacterLocation,
     val image: String,
     val episode: List<String>,
+    val url: String
+)
+
+data class CharacterOrigin(
+    val name: String,
+    val url: String
+)
+
+data class CharacterLocation(
+    val name: String,
     val url: String
 )

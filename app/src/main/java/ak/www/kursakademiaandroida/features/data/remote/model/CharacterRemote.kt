@@ -1,6 +1,8 @@
 package ak.www.kursakademiaandroida.features.data.remote.model
 
 import ak.www.kursakademiaandroida.features.characters.domain.model.Character
+import ak.www.kursakademiaandroida.features.characters.domain.model.CharacterLocation
+import ak.www.kursakademiaandroida.features.characters.domain.model.CharacterOrigin
 import com.google.gson.annotations.SerializedName
 
 
@@ -11,8 +13,8 @@ data class CharacterRemote(
     @SerializedName("species") val species: String,
     @SerializedName("type") val type: String,
     @SerializedName("gender") val gender: String,
-    @SerializedName("origin") val characterOrigin: CharacterOrigin,
-    @SerializedName("location") val characterLocation: CharacterLocation,
+    @SerializedName("origin") val characterOriginRemote: CharacterOriginRemote,
+    @SerializedName("location") val characterLocationRemote: CharacterLocationRemote,
     @SerializedName("image") val image: String,
     @SerializedName("episode") val episode: List<String>,
     @SerializedName("url") val url: String,
@@ -25,20 +27,30 @@ data class CharacterRemote(
         species = species,
         type = type,
         gender = gender,
-        characterOrigin = characterOrigin,
-        characterLocation = characterLocation,
+        characterOrigin = characterOriginRemote.toCharacterOrigin(),
+        characterLocation = characterLocationRemote.toCharacterLocation(),
         image = image,
         episode = episode,
         url = url
     )
 }
 
-data class CharacterOrigin(
+data class CharacterOriginRemote(
     @SerializedName("name") val name: String,
     @SerializedName("url") val url: String
-)
+) {
+    fun toCharacterOrigin() = CharacterOrigin(
+        name = name,
+        url = url
+    )
+}
 
-data class CharacterLocation(
+data class CharacterLocationRemote(
     @SerializedName("name") val name: String,
     @SerializedName("url") val url: String
-)
+) {
+    fun toCharacterLocation() = CharacterLocation(
+        name = name,
+        url = url
+    )
+}

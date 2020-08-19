@@ -1,4 +1,4 @@
-package ak.www.kursakademiaandroida.features.data
+package ak.www.kursakademiaandroida.core.database
 
 import androidx.room.RoomDatabase
 

@@ -51,23 +51,3 @@ data class CharacterDisplayable(
         )
     }
 }
-
-data class CharacterOriginDisplayable(
-    val name: String,
-    val url: String
-) {
-    constructor(characterOrigin: CharacterOrigin) : this(
-        name = characterOrigin.name,
-        url = characterOrigin.url
-    )
-}
-
-data class CharacterLocationDisplayable(
-    val name: String,
-    val url: String
-) {
-    constructor(characterLocation: CharacterLocation) : this(
-        name = characterLocation.name,
-        url = characterLocation.url
-    )
-}

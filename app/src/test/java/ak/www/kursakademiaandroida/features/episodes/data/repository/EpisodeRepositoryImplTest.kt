@@ -19,7 +19,7 @@ internal class EpisodeRepositoryImplTest {
     @Test
     fun `GIVEN network is connected WHEN episodes request THEN fetch episodes from API`() {
         //given
-        val api = mockk<RickAndMortyApi>() {
+        val api = mockk<RickAndMortyApi> {
             coEvery { getEpisodes() } returns EpisodesResponse.mock()
         }
         val episodeDao = mockk<EpisodeDao>(relaxed = true)
@@ -40,7 +40,7 @@ internal class EpisodeRepositoryImplTest {
     @Test
     fun `GIVEN network is connected AND successful data fetch WHEN episodes request THEN save episodes to local database`() {
         //given
-        val api = mockk<RickAndMortyApi>() {
+        val api = mockk<RickAndMortyApi> {
             coEvery { getEpisodes() } returns EpisodesResponse.mock()
         }
         val episodeDao = mockk<EpisodeDao>(relaxed = true)
@@ -62,7 +62,7 @@ internal class EpisodeRepositoryImplTest {
     fun `GIVEN network is disconnected WHEN episodes request THEN fetch episodes from local database`() {
         //given
         val api = mockk<RickAndMortyApi>(relaxed = true)
-        val episodeDao = mockk<EpisodeDao>() {
+        val episodeDao = mockk<EpisodeDao> {
             coEvery { getEpisodes() } returns listOf(EpisodeCached.mock(), EpisodeCached.mock())
         }
         val networkStateProvider = mockk<NetworkStateProvider> {

@@ -20,6 +20,8 @@ data class CharacterRemote(
     @SerializedName("url") val url: String,
     @SerializedName("created") val created: String
 ) {
+    companion object
+
     fun toCharacter() = Character(
         id = id,
         name = name,
@@ -39,6 +41,8 @@ data class CharacterOriginRemote(
     @SerializedName("name") val name: String,
     @SerializedName("url") val url: String
 ) {
+    companion object
+
     fun toCharacterOrigin() = CharacterOrigin(
         name = name,
         url = url
@@ -49,6 +53,8 @@ data class CharacterLocationRemote(
     @SerializedName("name") val name: String,
     @SerializedName("url") val url: String
 ) {
+    companion object
+
     fun toCharacterLocation() = CharacterLocation(
         name = name,
         url = url

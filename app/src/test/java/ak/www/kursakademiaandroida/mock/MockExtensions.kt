@@ -8,6 +8,7 @@ import ak.www.kursakademiaandroida.features.data.remote.model.CharacterLocationR
 import ak.www.kursakademiaandroida.features.data.remote.model.CharacterOriginRemote
 import ak.www.kursakademiaandroida.features.data.remote.model.CharacterRemote
 import ak.www.kursakademiaandroida.features.episodes.data.local.model.EpisodeCached
+import ak.www.kursakademiaandroida.features.episodes.domain.model.Episode
 import ak.www.kursakademiaandroida.features.locations.data.local.model.LocationCached
 import org.jetbrains.annotations.TestOnly
 
@@ -42,6 +43,16 @@ fun EpisodesResponse.Companion.mock() = EpisodesResponse(
 
 @TestOnly
 fun EpisodeCached.Companion.mock() = EpisodeCached(
+    id = 1,
+    name = "episode name",
+    characters = emptyList(),
+    url = "episode url",
+    airDate = "episode air date",
+    code = "episode code"
+)
+
+@TestOnly
+fun Episode.Companion.mock() = Episode(
     id = 1,
     name = "episode name",
     characters = emptyList(),

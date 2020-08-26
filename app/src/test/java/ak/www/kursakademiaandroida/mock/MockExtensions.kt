@@ -4,12 +4,16 @@ import ak.www.kursakademiaandroida.core.api.model.*
 import ak.www.kursakademiaandroida.features.characters.data.local.model.CharacterCached
 import ak.www.kursakademiaandroida.features.characters.data.local.model.CharacterLocationCached
 import ak.www.kursakademiaandroida.features.characters.data.local.model.CharacterOriginCached
+import ak.www.kursakademiaandroida.features.characters.domain.model.Character
+import ak.www.kursakademiaandroida.features.characters.domain.model.CharacterLocation
+import ak.www.kursakademiaandroida.features.characters.domain.model.CharacterOrigin
 import ak.www.kursakademiaandroida.features.data.remote.model.CharacterLocationRemote
 import ak.www.kursakademiaandroida.features.data.remote.model.CharacterOriginRemote
 import ak.www.kursakademiaandroida.features.data.remote.model.CharacterRemote
 import ak.www.kursakademiaandroida.features.episodes.data.local.model.EpisodeCached
 import ak.www.kursakademiaandroida.features.episodes.domain.model.Episode
 import ak.www.kursakademiaandroida.features.locations.data.local.model.LocationCached
+import ak.www.kursakademiaandroida.features.locations.domain.model.Location
 import org.jetbrains.annotations.TestOnly
 
 @TestOnly
@@ -93,15 +97,13 @@ fun LocationCached.Companion.mock() = LocationCached(
 )
 
 @TestOnly
-fun CharacterOriginRemote.Companion.mock() = CharacterOriginRemote(
-    name = "character origin name",
-    url = "character origin url"
-)
-
-@TestOnly
-fun CharacterLocationRemote.Companion.mock() = CharacterLocationRemote(
-    name = "character location name",
-    url = "character location url"
+fun Location.Companion.mock() = Location(
+    id = 1,
+    name = "location name",
+    type = "location type",
+    dimension = "location dimensions",
+    residents = emptyList(),
+    url = "location url"
 )
 
 @TestOnly
@@ -121,6 +123,18 @@ fun CharacterRemote.Companion.mock() = CharacterRemote(
 )
 
 @TestOnly
+fun CharacterOriginRemote.Companion.mock() = CharacterOriginRemote(
+    name = "character origin name",
+    url = "character origin url"
+)
+
+@TestOnly
+fun CharacterLocationRemote.Companion.mock() = CharacterLocationRemote(
+    name = "character location name",
+    url = "character location url"
+)
+
+@TestOnly
 fun CharactersResponse.Companion.mock() = CharactersResponse(
     info = ResponseInfo.mock(),
     results = listOf(
@@ -128,18 +142,6 @@ fun CharactersResponse.Companion.mock() = CharactersResponse(
         CharacterRemote.mock(),
         CharacterRemote.mock()
     )
-)
-
-@TestOnly
-fun CharacterOriginCached.Companion.mock() = CharacterOriginCached(
-    originName = "character origin name",
-    originUrl = "character origin url"
-)
-
-@TestOnly
-fun CharacterLocationCached.Companion.mock() = CharacterLocationCached(
-    locationName = "character location name",
-    locationUrl = "character location url"
 )
 
 @TestOnly
@@ -155,4 +157,43 @@ fun CharacterCached.Companion.mock() = CharacterCached(
     image = "character image",
     episode = emptyList(),
     url = "character url"
+)
+
+@TestOnly
+fun CharacterOriginCached.Companion.mock() = CharacterOriginCached(
+    originName = "character origin name",
+    originUrl = "character origin url"
+)
+
+@TestOnly
+fun CharacterLocationCached.Companion.mock() = CharacterLocationCached(
+    locationName = "character location name",
+    locationUrl = "character location url"
+)
+
+@TestOnly
+fun Character.Companion.mock() = Character(
+    id = 1,
+    name = "character name",
+    status = "character status",
+    species = "character species",
+    type = "character type",
+    gender = "character gender",
+    characterOrigin = CharacterOrigin.mock(),
+    characterLocation = CharacterLocation.mock(),
+    image = "character image",
+    episode = emptyList(),
+    url = "character url"
+)
+
+@TestOnly
+fun CharacterOrigin.Companion.mock() = CharacterOrigin(
+    name = "character origin name",
+    url = "character origin url"
+)
+
+@TestOnly
+fun CharacterLocation.Companion.mock() = CharacterLocation(
+    name = "character location name",
+    url = "character location url"
 )

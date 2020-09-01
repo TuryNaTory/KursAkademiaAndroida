@@ -3,6 +3,7 @@ package ak.www.kursakademiaandroida.features.episodes.di
 import ak.www.kursakademiaandroida.features.episodes.data.repository.EpisodeRepositoryImpl
 import ak.www.kursakademiaandroida.features.episodes.domain.EpisodeRepository
 import ak.www.kursakademiaandroida.features.episodes.domain.GetEpisodesUseCase
+import ak.www.kursakademiaandroida.features.episodes.presentation.EpisodeAdapter
 import ak.www.kursakademiaandroida.features.episodes.presentation.EpisodeFragment
 import ak.www.kursakademiaandroida.features.episodes.presentation.EpisodeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -18,4 +19,5 @@ val episodeModule = module {
     //presentation
     viewModel { EpisodeViewModel(get()) }
     factory { EpisodeFragment() }
+    factory { EpisodeAdapter() }
 }

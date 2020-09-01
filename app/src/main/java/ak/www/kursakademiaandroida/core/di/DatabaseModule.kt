@@ -2,14 +2,14 @@ package ak.www.kursakademiaandroida.core.di
 
 import ak.www.kursakademiaandroida.core.database.AppDatabase
 import androidx.room.Room
-import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
 val databaseModule = module {
 
     single {
         Room.databaseBuilder(
-            androidContext(),
+            androidApplication(),
             AppDatabase::class.java,
             "appDatabase"
         )
@@ -20,5 +20,5 @@ val databaseModule = module {
 
     single { get<AppDatabase>().characterDao() }
 
-    single { get<AppDatabase>().locationsDao() }
+    single { get<AppDatabase>().locationDao() }
 }

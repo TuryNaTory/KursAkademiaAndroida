@@ -1,8 +1,6 @@
 package ak.www.kursakademiaandroida.core.di
 
-import org.koin.core.module.Module
-
-val koinInjector: List<Module> = featureModules
-    .plus(networkModule)
+val koinInjector = featureModules
     .plus(appModule)
+    .plus(networkModule)
     .plus(databaseModule)

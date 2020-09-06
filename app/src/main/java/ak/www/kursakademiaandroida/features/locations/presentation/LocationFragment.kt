@@ -1,6 +1,5 @@
 package ak.www.kursakademiaandroida.features.locations.presentation
 
-import ak.www.kursakademiaandroida.MainActivity
 import ak.www.kursakademiaandroida.R
 import ak.www.kursakademiaandroida.core.base.BaseFragment
 import ak.www.kursakademiaandroida.features.locations.presentation.model.LocationDisplayable
@@ -36,10 +35,6 @@ class LocationFragment : BaseFragment<LocationViewModel>(R.layout.fragment_locat
     override fun onPendingState() {
         super.onPendingState()
         showProgressBar(true)
-    }
-
-    private fun showProgressBar(enable: Boolean) {
-        (activity as MainActivity).showProgressBar(enable)
     }
 
     private fun initRecycler() {

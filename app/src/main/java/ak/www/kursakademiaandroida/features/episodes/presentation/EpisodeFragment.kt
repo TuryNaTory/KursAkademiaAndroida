@@ -1,6 +1,5 @@
 package ak.www.kursakademiaandroida.features.episodes.presentation
 
-import ak.www.kursakademiaandroida.MainActivity
 import ak.www.kursakademiaandroida.R
 import ak.www.kursakademiaandroida.core.base.BaseFragment
 import ak.www.kursakademiaandroida.features.episodes.presentation.model.EpisodeDisplayable
@@ -36,10 +35,6 @@ class EpisodeFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_episode
     override fun onPendingState() {
         super.onPendingState()
         showProgressBar(true)
-    }
-
-    private fun showProgressBar(enable: Boolean) {
-        (activity as MainActivity).showProgressBar(enable)
     }
 
     private fun initRecycler() {

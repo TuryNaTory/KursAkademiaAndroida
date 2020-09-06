@@ -1,6 +1,5 @@
 package ak.www.kursakademiaandroida.features.characters.presentation
 
-import ak.www.kursakademiaandroida.MainActivity
 import ak.www.kursakademiaandroida.R
 import ak.www.kursakademiaandroida.core.base.BaseFragment
 import ak.www.kursakademiaandroida.features.characters.presentation.model.CharacterDisplayable
@@ -35,11 +34,6 @@ class CharacterFragment : BaseFragment<CharacterViewModel>(R.layout.fragment_cha
         super.onPendingState()
         showProgressBar(true)
     }
-
-    private fun showProgressBar(enable: Boolean) {
-        (activity as MainActivity).showProgressBar(enable)
-    }
-
 
     private fun initRecycler() {
         rvCharacters.layoutManager = layoutManager

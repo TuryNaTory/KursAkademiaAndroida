@@ -1,5 +1,6 @@
 package ak.www.kursakademiaandroida.core.base
 
+import ak.www.kursakademiaandroida.MainActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -36,6 +37,10 @@ abstract class BaseFragment<T : BaseViewModel>(@LayoutRes layoutRes: Int) : Frag
 
     protected fun showToast(@StringRes stringRes: Int) {
         showToast(getString(stringRes))
+    }
+
+    protected fun showProgressBar(enable: Boolean) {
+        (activity as MainActivity).showProgressBar(enable)
     }
 
     private fun bindViewModelToLifecycle() {

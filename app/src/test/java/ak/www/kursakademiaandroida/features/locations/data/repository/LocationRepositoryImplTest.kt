@@ -2,6 +2,7 @@ package ak.www.kursakademiaandroida.features.locations.data.repository
 
 import ak.www.kursakademiaandroida.core.api.RickAndMortyApi
 import ak.www.kursakademiaandroida.core.api.model.LocationsResponse
+import ak.www.kursakademiaandroida.core.exception.ErrorWrapper
 import ak.www.kursakademiaandroida.core.network.NetworkStateProvider
 import ak.www.kursakademiaandroida.features.locations.data.local.LocationDao
 import ak.www.kursakademiaandroida.features.locations.data.local.model.LocationCached
@@ -26,9 +27,9 @@ internal class LocationRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
-
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: LocationRepository =
-            LocationRepositoryImpl(api, locationDao, networkStateProvider)
+            LocationRepositoryImpl(api, locationDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getLocations() }
@@ -47,9 +48,9 @@ internal class LocationRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
-
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: LocationRepository =
-            LocationRepositoryImpl(api, locationDao, networkStateProvider)
+            LocationRepositoryImpl(api, locationDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getLocations() }
@@ -68,9 +69,9 @@ internal class LocationRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns false
         }
-
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: LocationRepository =
-            LocationRepositoryImpl(api, locationDao, networkStateProvider)
+            LocationRepositoryImpl(api, locationDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getLocations() }

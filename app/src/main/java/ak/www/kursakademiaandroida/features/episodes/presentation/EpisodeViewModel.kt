@@ -1,6 +1,7 @@
 package ak.www.kursakademiaandroida.features.episodes.presentation
 
 import ak.www.kursakademiaandroida.core.base.BaseViewModel
+import ak.www.kursakademiaandroida.core.exception.ErrorMapper
 import ak.www.kursakademiaandroida.features.episodes.domain.GetEpisodesUseCase
 import ak.www.kursakademiaandroida.features.episodes.domain.model.Episode
 import ak.www.kursakademiaandroida.features.episodes.presentation.model.EpisodeDisplayable
@@ -9,7 +10,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 
-class EpisodeViewModel(private val getEpisodesUseCase: GetEpisodesUseCase) : BaseViewModel() {
+class EpisodeViewModel(
+    private val getEpisodesUseCase: GetEpisodesUseCase,
+    errorMapper: ErrorMapper
+) : BaseViewModel(errorMapper) {
 
     private val _episodes by lazy {
         MutableLiveData<List<Episode>>()

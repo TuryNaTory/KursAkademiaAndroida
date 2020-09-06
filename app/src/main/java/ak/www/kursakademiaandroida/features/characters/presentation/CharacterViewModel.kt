@@ -1,6 +1,7 @@
 package ak.www.kursakademiaandroida.features.characters.presentation
 
 import ak.www.kursakademiaandroida.core.base.BaseViewModel
+import ak.www.kursakademiaandroida.core.exception.ErrorMapper
 import ak.www.kursakademiaandroida.features.characters.domain.GetCharactersUseCase
 import ak.www.kursakademiaandroida.features.characters.domain.model.Character
 import ak.www.kursakademiaandroida.features.characters.presentation.model.CharacterDisplayable
@@ -9,7 +10,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 
-class CharacterViewModel(private val getCharactersUseCase: GetCharactersUseCase) : BaseViewModel() {
+class CharacterViewModel(
+    private val getCharactersUseCase: GetCharactersUseCase,
+    errorMapper: ErrorMapper
+) : BaseViewModel(errorMapper) {
 
     private val _characters by lazy {
         MutableLiveData<List<Character>>()

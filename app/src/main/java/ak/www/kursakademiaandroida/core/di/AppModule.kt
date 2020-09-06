@@ -1,5 +1,7 @@
 package ak.www.kursakademiaandroida.core.di
 
+import ak.www.kursakademiaandroida.core.exception.ErrorMapper
+import ak.www.kursakademiaandroida.core.exception.ErrorMapperImpl
 import ak.www.kursakademiaandroida.core.exception.ErrorWrapper
 import ak.www.kursakademiaandroida.core.exception.ErrorWrapperImpl
 import ak.www.kursakademiaandroida.core.network.NetworkStateProvider
@@ -26,4 +28,6 @@ val appModule = module {
     factory<NetworkStateProvider> { NetworkStateProviderImpl(get()) }
 
     factory<ErrorWrapper> { ErrorWrapperImpl() }
+
+    factory<ErrorMapper> { ErrorMapperImpl(androidContext()) }
 }

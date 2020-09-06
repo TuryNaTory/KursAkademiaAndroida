@@ -26,6 +26,6 @@ suspend fun <T> callOrThrow(
     errorWrapper: ErrorWrapper,
     apiCall: suspend () -> T
 ): T {
-    return kotlin.runCatching { apiCall() }
+    return runCatching { apiCall() }
         .getOrElse { throw errorWrapper.wrap(it) }
 }

@@ -2,6 +2,7 @@ package ak.www.kursakademiaandroida.features.episodes.data.repository
 
 import ak.www.kursakademiaandroida.core.api.RickAndMortyApi
 import ak.www.kursakademiaandroida.core.api.model.EpisodesResponse
+import ak.www.kursakademiaandroida.core.exception.ErrorWrapper
 import ak.www.kursakademiaandroida.core.network.NetworkStateProvider
 import ak.www.kursakademiaandroida.features.episodes.data.local.EpisodeDao
 import ak.www.kursakademiaandroida.features.episodes.data.local.model.EpisodeCached
@@ -26,9 +27,9 @@ internal class EpisodeRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
-
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: EpisodeRepository =
-            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
+            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getEpisodes() }
@@ -47,9 +48,9 @@ internal class EpisodeRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
-
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: EpisodeRepository =
-            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
+            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getEpisodes() }
@@ -68,9 +69,9 @@ internal class EpisodeRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns false
         }
-
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: EpisodeRepository =
-            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
+            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getEpisodes() }

@@ -1,12 +1,14 @@
 package ak.www.kursakademiaandroida.core.base
 
+import ak.www.kursakademiaandroida.core.exception.ErrorMapper
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hadilq.liveevent.LiveEvent
 
-open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
+open class BaseViewModel(private val errorMapper: ErrorMapper) : ViewModel(),
+    DefaultLifecycleObserver {
 
     private val _message: LiveEvent<String> by lazy { LiveEvent<String>() }
     val message: LiveData<String> by lazy { _message }
@@ -27,7 +29,7 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
     }
 
     protected fun handleFailure(throwable: Throwable) {
-        throwable.message
-            ?.let { showMessage(it) }
+        val errorMessage = errorMapper.map(throwable)
+        showMessage(errorMessage)
     }
 }

@@ -1,5 +1,7 @@
 package ak.www.kursakademiaandroida.core.di
 
+import ak.www.kursakademiaandroida.core.exception.ErrorWrapper
+import ak.www.kursakademiaandroida.core.exception.ErrorWrapperImpl
 import ak.www.kursakademiaandroida.core.network.NetworkStateProvider
 import ak.www.kursakademiaandroida.core.network.NetworkStateProviderImpl
 import android.content.Context
@@ -22,4 +24,6 @@ val appModule = module {
     factory { androidContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager }
 
     factory<NetworkStateProvider> { NetworkStateProviderImpl(get()) }
+
+    factory<ErrorWrapper> { ErrorWrapperImpl() }
 }

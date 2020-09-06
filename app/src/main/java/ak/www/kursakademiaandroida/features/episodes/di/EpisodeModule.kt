@@ -11,7 +11,7 @@ import org.koin.dsl.module
 
 val episodeModule = module {
     //data
-    factory<EpisodeRepository> { EpisodeRepositoryImpl(get(), get(), get()) }
+    factory<EpisodeRepository> { EpisodeRepositoryImpl(get(), get(), get(), get()) }
 
     //domain
     factory { GetEpisodesUseCase(get()) }

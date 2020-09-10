@@ -1,6 +1,7 @@
 package ak.www.kursakademiaandroida.features.locations.presentation
 
 import ak.www.kursakademiaandroida.core.base.UIState
+import ak.www.kursakademiaandroida.core.exception.ErrorMapper
 import ak.www.kursakademiaandroida.features.locations.domain.GetLocationsUseCase
 import ak.www.kursakademiaandroida.features.locations.domain.model.Location
 import ak.www.kursakademiaandroida.mock.mock
@@ -21,7 +22,8 @@ internal class LocationViewModelTest : ViewModelTest() {
     fun `WHEN location live data is observed THEN set pending state`() {
         //given
         val useCase = mockk<GetLocationsUseCase>(relaxed = true)
-        val viewModel = LocationViewModel(useCase)
+        val errorMapper = mockk<ErrorMapper>(relaxed = true)
+        val viewModel = LocationViewModel(useCase, errorMapper)
 
         //when
         viewModel.locations.observeForTesting()
@@ -34,7 +36,8 @@ internal class LocationViewModelTest : ViewModelTest() {
     fun `WHEN location live data is observed THEN invoke use case to get locations`() {
         //given
         val useCase = mockk<GetLocationsUseCase>(relaxed = true)
-        val viewModel = LocationViewModel(useCase)
+        val errorMapper = mockk<ErrorMapper>(relaxed = true)
+        val viewModel = LocationViewModel(useCase, errorMapper)
 
         //when
         viewModel.locations.observeForTesting()
@@ -52,7 +55,8 @@ internal class LocationViewModelTest : ViewModelTest() {
                 lastArg<(Result<List<Location>>) -> Unit>()(Result.success(locations))
             }
         }
-        val viewModel = LocationViewModel(useCase)
+        val errorMapper = mockk<ErrorMapper>(relaxed = true)
+        val viewModel = LocationViewModel(useCase, errorMapper)
 
         //when
         viewModel.locations.observeForTesting()
@@ -79,8 +83,11 @@ internal class LocationViewModelTest : ViewModelTest() {
                 lastArg<(Result<List<Location>>) -> Unit>()(Result.failure(throwable))
             }
         }
+        val errorMapper = mockk<ErrorMapper> {
+            every { map(any()) } returns throwable.message!!
+        }
         val observer = mockk<Observer<String>>(relaxed = true)
-        val viewModel = LocationViewModel(useCase)
+        val viewModel = LocationViewModel(useCase, errorMapper)
 
         //when
         viewModel.message.observeForever(observer)

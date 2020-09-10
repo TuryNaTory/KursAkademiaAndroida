@@ -1,6 +1,7 @@
 package ak.www.kursakademiaandroida.features.locations.presentation
 
 import ak.www.kursakademiaandroida.core.base.BaseViewModel
+import ak.www.kursakademiaandroida.core.exception.ErrorMapper
 import ak.www.kursakademiaandroida.features.locations.domain.GetLocationsUseCase
 import ak.www.kursakademiaandroida.features.locations.domain.model.Location
 import ak.www.kursakademiaandroida.features.locations.presentation.model.LocationDisplayable
@@ -9,7 +10,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 
-class LocationViewModel(private val getLocationsUseCase: GetLocationsUseCase) : BaseViewModel() {
+class LocationViewModel(
+    private val getLocationsUseCase: GetLocationsUseCase,
+    errorMapper: ErrorMapper
+) : BaseViewModel(errorMapper) {
 
     private val _locations by lazy {
         MutableLiveData<List<Location>>()

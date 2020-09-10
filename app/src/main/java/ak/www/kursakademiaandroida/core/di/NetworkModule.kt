@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val networkModule = module {
 
-    single {
+    single<Interceptor> {
         HttpLoggingInterceptor()
             .apply {
                 level =

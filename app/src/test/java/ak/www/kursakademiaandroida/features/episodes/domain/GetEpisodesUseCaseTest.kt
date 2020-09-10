@@ -3,7 +3,7 @@ package ak.www.kursakademiaandroida.features.episodes.domain
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.GlobalScope
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 internal class GetEpisodesUseCaseTest {
 

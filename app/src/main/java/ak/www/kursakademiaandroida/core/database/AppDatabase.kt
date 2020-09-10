@@ -21,5 +21,5 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun characterDao(): CharacterDao
 
-    abstract fun locationsDao(): LocationDao
+    abstract fun locationDao(): LocationDao
 }

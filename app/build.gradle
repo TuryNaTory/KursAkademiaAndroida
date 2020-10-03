@@ -47,6 +47,7 @@ dependencies {
     implementation lifecycleDependencies.values()
     implementation networkDependencies.values()
     implementation databaseDependencies.values()
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt databaseKaptDependencies.values()
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:5.6.2"

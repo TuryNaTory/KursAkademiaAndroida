@@ -22,13 +22,13 @@ class CharacterDetailsFragment :
         viewModel.character.observe(this) { showCharacter(it) }
     }
 
-    private fun showCharacter(character: CharacterDisplayable?) {
-        tvId.text = character?.id.toString()
-        tvName.text = character?.name
-        tvStatus.text = character?.status
-        tvSpecies.text = character?.species
-        tvType.text = character?.type
-        tvGender.text = character?.gender
+    private fun showCharacter(character: CharacterDisplayable) {
+        tvId.text = character.id.toString()
+        tvName.text = character.name
+        tvStatus.text = character.status
+        tvSpecies.text = character.species
+        tvType.text = character.type
+        tvGender.text = character.gender
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

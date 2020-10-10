@@ -22,11 +22,11 @@ class LocationDetailsFragment :
         viewModel.location.observe(this) { showLocation(it) }
     }
 
-    private fun showLocation(location: LocationDisplayable?) {
-        tvId.text = location?.id.toString()
-        tvName.text = location?.name
-        tvType.text = location?.type
-        tvDimension.text = location?.dimension
+    private fun showLocation(location: LocationDisplayable) {
+        tvId.text = location.id.toString()
+        tvName.text = location.name
+        tvType.text = location.type
+        tvDimension.text = location.dimension
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

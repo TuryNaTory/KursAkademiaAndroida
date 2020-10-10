@@ -22,11 +22,11 @@ class EpisodeDetailsFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_
         viewModel.episode.observe(this) { showEpisode(it) }
     }
 
-    private fun showEpisode(episode: EpisodeDisplayable?) {
-        tvId.text = episode?.id.toString()
-        tvAirDate.text = episode?.airDate
-        tvName.text = episode?.name
-        tvCode.text = episode?.code
+    private fun showEpisode(episode: EpisodeDisplayable) {
+        tvId.text = episode.id.toString()
+        tvAirDate.text = episode.airDate
+        tvName.text = episode.name
+        tvCode.text = episode.code
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

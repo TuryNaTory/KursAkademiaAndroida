@@ -1,11 +1,14 @@
 package ak.www.kursakademiaandroida.features.locations.di
 
+import ak.www.kursakademiaandroida.features.locations.all.presentation.LocationAdapter
+import ak.www.kursakademiaandroida.features.locations.all.presentation.LocationsFragment
+import ak.www.kursakademiaandroida.features.locations.all.presentation.LocationsViewModel
 import ak.www.kursakademiaandroida.features.locations.data.repository.LocationRepositoryImpl
+import ak.www.kursakademiaandroida.features.locations.details.presentation.LocationViewModel
 import ak.www.kursakademiaandroida.features.locations.domain.GetLocationsUseCase
 import ak.www.kursakademiaandroida.features.locations.domain.LocationRepository
-import ak.www.kursakademiaandroida.features.locations.presentation.LocationAdapter
-import ak.www.kursakademiaandroida.features.locations.presentation.LocationFragment
-import ak.www.kursakademiaandroida.features.locations.presentation.LocationViewModel
+import ak.www.kursakademiaandroida.features.locations.navigation.LocationNavigator
+import ak.www.kursakademiaandroida.features.locations.navigation.LocationNavigatorImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -17,7 +20,11 @@ val locationModule = module {
     factory { GetLocationsUseCase(get()) }
 
     //presentation
-    viewModel { LocationViewModel(get(), get()) }
-    factory { LocationFragment() }
+    viewModel { LocationsViewModel(get(), get(), get()) }
+    viewModel { LocationViewModel() }
+    factory { LocationsFragment() }
     factory { LocationAdapter() }
+
+    //navigation
+    factory<LocationNavigator> { LocationNavigatorImpl(get()) }
 }

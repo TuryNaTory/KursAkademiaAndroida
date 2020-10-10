@@ -1,12 +1,15 @@
 package ak.www.kursakademiaandroida.features.characters.di
 
 
+import ak.www.kursakademiaandroida.features.characters.all.presentation.CharacterAdapter
+import ak.www.kursakademiaandroida.features.characters.all.presentation.CharactersFragment
+import ak.www.kursakademiaandroida.features.characters.all.presentation.CharactersViewModel
 import ak.www.kursakademiaandroida.features.characters.data.repository.CharacterRepositoryImpl
+import ak.www.kursakademiaandroida.features.characters.details.presentation.CharacterViewModel
 import ak.www.kursakademiaandroida.features.characters.domain.CharacterRepository
 import ak.www.kursakademiaandroida.features.characters.domain.GetCharactersUseCase
-import ak.www.kursakademiaandroida.features.characters.presentation.CharacterAdapter
-import ak.www.kursakademiaandroida.features.characters.presentation.CharacterFragment
-import ak.www.kursakademiaandroida.features.characters.presentation.CharacterViewModel
+import ak.www.kursakademiaandroida.features.characters.navigation.CharacterNavigator
+import ak.www.kursakademiaandroida.features.characters.navigation.CharacterNavigatorImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -18,7 +21,11 @@ val characterModule = module {
     factory { GetCharactersUseCase(get()) }
 
     //presentation
-    viewModel { CharacterViewModel(get(), get()) }
-    factory { CharacterFragment() }
+    viewModel { CharactersViewModel(get(), get(), get()) }
+    viewModel { CharacterViewModel() }
+    factory { CharactersFragment() }
     factory { CharacterAdapter() }
+
+    //navigation
+    factory<CharacterNavigator> { CharacterNavigatorImpl(get()) }
 }

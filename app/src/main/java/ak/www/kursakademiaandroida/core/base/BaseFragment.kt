@@ -1,6 +1,6 @@
 package ak.www.kursakademiaandroida.core.base
 
-import ak.www.kursakademiaandroida.MainActivity
+import ak.www.kursakademiaandroida.features.MainActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
